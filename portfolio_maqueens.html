@@ -7,6 +7,14 @@
     <title>portfolio_mcqueens</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/portfolio_mcqueens.min.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('.scrBtn').click(function(){
+                $('html,body').stop().animate({scrollTop : 0},500);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="imgWrap">
