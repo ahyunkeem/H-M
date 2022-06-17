@@ -1,0 +1,84 @@
+// 폰트
+@mixin ff($fontname, $url) {
+    @font-face {
+        font-family: #{$fontname};
+        src: url('./fonts/#{$url}') format('truetype');
+    }  
+}
+@include ff(dut, 'dutchb.ttf');
+@include ff(dutl, 'dutch.ttf');
+@include ff(Thin, 'NotoSansKR-Thin.otf');
+@include ff(Light, 'NotoSansKR-Light.otf');
+@include ff(Regular, 'NotoSansKR-Regular.otf');
+@include ff(Medium, 'NotoSansKR-Medium.otf');
+@include ff(Bold, 'NotoSansKR-Bold.otf');
+@include ff(bau, 'BAUHS93.TTF');
+
+// 반응형 미디어쿼리
+@mixin mob{
+    @media (max-width:420px) and (min-width:0px){
+        @content;
+    }
+}
+@mixin tab{
+    @media (max-width:1024px) and (min-width:0px){
+        @content;
+    }
+}
+
+
+html{
+    font-size: 3vw;
+    @include tab{
+        font-size: 5vw;
+    }
+    @include mob{
+        font-size: 9.5vw;
+    }
+
+    body{
+        font-size: 0.7vw;
+        overflow-x: hidden;
+        position: relative;
+        @include tab{
+            font-size: 1vw;
+        }
+        @include mob{
+            font-size: 2.4vw;
+        }
+    }
+}
+
+.imgWrap{
+    height: 100%;
+    .image{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../images/portfolio_layout_mcqueens2.jpg');
+        height: #{'min(246rem, 9840px)'};
+        margin: 0 auto;
+    }
+}
+
+.scrBtn{
+    cursor: pointer;
+    position: fixed;
+    right: 2%;
+    bottom: 3%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    line-height: 45px;
+    text-align: center;
+    font-family: 'dut';
+    color: #666;
+    @include mob{
+        width: 30px;
+        height: 30px;
+        right: 1%;
+        bottom: 1%;
+        font-size: #{'min(1.2em,12px)'};
+        line-height: 25px;
+    }
+}

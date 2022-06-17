@@ -49,18 +49,17 @@ html{
     }
 }
 
-// 포트폴리오
 .imgWrap{
+    height: 100%;
     .image{
-        height: 100%;
+        margin: 0 auto;
+        height: #{'min(190rem,7600px)'};
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: center;
-        background-image: url('../images/portfolio\ layout_polo\ ralphlauren.pdf');
+        background-image: url('../images/portfolio_layout_polo2.jpg');
     }
 }
 
-// 탑버튼
 .scrBtn{
     cursor: pointer;
     position: fixed;
