@@ -1,0 +1,712 @@
+// 폰트사이즈
+$fz13 : #{'min(1.3em, 13px)'};
+$fz20 : #{'min(1.5em,15px)'};
+$fz20 : #{'min(2em,20px)'};
+$fz24 : #{'min(2.4em,24px)'};
+// 높이
+$hi20: #{'min(0.5rem,20px)'};
+$hi40: #{'min(1rem,40px)'};
+$hi60: #{'min(1.5rem,60px)'};
+$hi80: #{'min(2rem,80px)'};
+$hi120: #{'min(3rem,120px)'};
+// 컬러
+$co : #ffff00;
+
+// 그리드
+@mixin grid($dev){
+    @if($dev == 'pc'){
+        width: 80%;
+        max-width: 1080px;
+    }
+    @else{
+        width: 90%;
+        max-width: 700px;
+    }
+    margin: 0 auto;
+}
+// 이미지 수식
+@mixin img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+// 폰트
+@mixin ff($fontname, $url) {
+    @font-face {
+        font-family: #{$fontname};
+        src: url('./fonts/#{$url}') format('truetype');
+    }  
+}
+@include ff(dut, 'dutchb.ttf');
+@include ff(dutl, 'dutch.ttf');
+@include ff(Thin, 'NotoSansKR-Thin.otf');
+@include ff(Light, 'NotoSansKR-Light.otf');
+@include ff(Regular, 'NotoSansKR-Regular.otf');
+@include ff(Medium, 'NotoSansKR-Medium.otf');
+@include ff(Bold, 'NotoSansKR-Bold.otf');
+@include ff(bau, 'BAUHS93.TTF');
+
+// 반응형 미디어쿼리
+@mixin mob{
+    @media (max-width:420px) and (min-width:0px){
+        @content;
+    }
+}
+@mixin tab{
+    @media (max-width:1024px) and (min-width:0px){
+        @content;
+    }
+}
+
+
+html{
+    font-size: 3vw;
+    @include tab{
+        font-size: 5vw;
+    }
+    @include mob{
+        font-size: 9.5vw;
+    }
+
+    body{
+        font-size: 0.7vw;
+        overflow-x: hidden;
+        position: relative;
+        @include tab{
+            font-size: 1vw;
+        }
+        @include mob{
+            font-size: 2.4vw;
+        }
+    }
+}
+
+// 메인 1 페이지
+.mainWrap{
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    main{
+        @include grid('pc');
+        padding: #{'min(4rem,160px)'} 0 $hi40;
+        @include tab{
+            @include grid('');
+            padding: #{'min(5rem,200px)'} 0 $hi40;
+            height: 100%;
+            overflow: visible;
+        }
+        @include mob{
+            padding: $hi120 0 $hi40;
+            height: 100%;
+        }
+        .curPoint{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: $co;
+            position: absolute;
+            top: 500px;
+            left: 500px;
+            mix-blend-mode: exclusion;
+            transform: translate(-50%,-50%);
+            position: fixed;
+            cursor: none;
+            @include tab{
+                display: none;
+            }
+        }
+        h1{
+            font-size: #{'min(16.5em,165px)'};
+            line-height: #{'min(3rem,120px)'};
+            font-family: 'bau';
+            text-align: center;
+            @include mob{
+                font-size: #{'min(7.5em,75px)'};
+                line-height: $hi60;
+            }
+        }
+        h2{
+            margin-top: $hi40;
+            font-size: $fz24;
+            line-height: $hi40;
+            text-align: center;
+            color: #666;
+            letter-spacing: 5px;
+            @include mob{
+                font-size: #{'min(1.3em,13px)'};
+                margin-top: 0px;
+            }
+        }
+        .scrBar{
+            .bar{
+                margin: 0 auto;
+                margin-top: $hi40;
+                height: #{'min(4rem,160px)'};
+                @include img();
+                background-image: url('../images/click\ arrow.png');
+                background-size: contain;
+                @include mob{
+                    margin-top: $hi20;
+                    height: #{'min(3rem, 120px)'};
+                    background-image: url('../images/click\ arrow\ mini.png');
+                }
+            }
+            .round{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 4px solid #ccc;
+                margin: 0 auto;
+                margin-top: $hi20;
+                @include mob{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            h4{
+                font-size: $fz13;
+                text-align: center;
+                color: #666;
+                line-height: $hi20;
+                margin-top: 5px;
+                @include tab{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+.bnrWrap{
+    &:nth-child(2){
+        background-color: rgb(247, 247, 247);
+    }
+    .banner{
+
+        // 자기소개 2 페이지
+        &.bnr01{
+            @include grid('pc');
+            padding: $hi80 0 $hi60;
+            @include tab{
+                @include grid('');
+            }
+            .bnrTop{
+                .title{
+                    width: 25%;
+                    margin: 0 auto;
+                    @include tab{
+                        width: 60%;
+                    }
+                    @include mob{
+                        width: 70%;
+                    }
+                    h2{
+                        text-align: center;
+                        font-size: #{'min(1.6em,16px)'};
+                        line-height: $hi80;
+                        font-family: 'dutl';
+                        span{
+                            font-size: $fz24;
+                            margin-left: #{'min(1.5em,15px)'};
+                            font-family: 'dut';
+                            @include mob{
+                                font-size: $fz20;
+                            }
+                        }
+                    }
+                    .bar{
+                        width: 100%;
+                        left: 0;
+                        height: 5px;
+                        border-radius: 10px;
+                        background-color: $co;
+                        margin-top: -10px;
+                    }
+                }
+                .subTitle{
+                    width: 50%;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: space-between;
+                    font-family: 'dutl';
+                    @include tab{
+                        width: 70%;
+                        flex-wrap: wrap;
+                    }
+                    h4{
+                        font-size: #{'min(1.5em,15px)'};
+                        line-height: $hi40;
+                        margin-top: $hi20;
+                        @include mob{
+                            margin-top: 0;
+                            &:nth-child(1){
+                                margin-top: $hi20;
+                            }
+                        }
+                        i{
+                            margin-right: #{'min(1.5em,15px)'};
+                        }
+                    }
+                }
+            }
+            .bnrBtm{
+                display: flex;
+                justify-content: space-between;
+                margin-top: $hi120;
+                @include tab{
+                    margin-top: $hi80;
+                }
+                @include mob{
+                    display: block;
+                }
+                .bnrLeft{
+                    width: calc(100% / 12 * 5.5);
+                    font-size: #{'min(1.5em,15px)'};
+                    line-height: $hi40;
+                    font-family: 'light';
+                    @include tab{
+                        width: calc(50% - 10px);
+                    }
+                    @include mob{
+                        width: 100%;
+                        font-size: $fz13;
+                    }
+                    & h2{
+                        font-size: $fz20;
+                        font-family: 'dut';
+                        line-height: $hi80;
+                        @include mob{
+                            font-size: #{'min(1.6em,16px)'};
+                            line-height: $hi40;
+                        }
+                    }
+                    & span{
+                        margin-right: #{'min(3em,30px)'};
+                        font-family: 'dutl';
+                    }
+                    & h4{
+                        margin-left: #{'min(3em,30px)'};
+                        @include tab{
+                            margin-left: 0;
+                        }
+                    }
+                    .education{
+                        h2{}
+                        h4{
+                            span{}
+                        }
+                    }
+                    .license{
+                        @include mob{
+                            margin-top: $hi40;
+                        }
+                        h2{}
+                        h4{
+                            span{}
+                        }
+                    }
+                }
+                .bnrRight{
+                    width: calc(100% / 12 * 5.5);
+                    font-size: #{'min(1.5em,15px)'};
+                    line-height: $hi40;
+                    font-family: 'light';
+                    @include tab{
+                        width: calc(50% - 10px);
+                    }
+                    @include mob{
+                        width: 100%;
+                        font-size: $fz13;
+                    }
+                    & h2{
+                        font-size: $fz20;
+                        font-family: 'dut';
+                        line-height: $hi80;
+                        @include mob{
+                            font-size: #{'min(1.6em,16px)'};
+                            line-height: $hi40
+                        }
+                    }
+                    & span{
+                        margin-right: #{'min(3em,30px)'};
+                        font-family: 'dutl';
+                    }
+                    & h4{
+                        margin-left: #{'min(3em,30px)'};
+                        @include tab{
+                            margin-left: 0;
+                        }
+                    }
+                    .activities{
+                        @include mob{
+                            margin-top: $hi40;
+                        }
+                        h2{}
+                        h4{
+                            span{}
+                        }
+                    }
+                    .awards{
+                        @include mob{
+                            margin-top: $hi40;
+                        }
+                        h2{}
+                        h4{
+                            span{}
+                        }
+                    }
+                }
+            }
+            .downBtn{
+                margin-top: $hi60;
+                @include img();
+                background-size: contain;
+                height: $hi20;
+                background-image: url('../images/arrow.png');
+                @include mob{
+                    display: none
+                }
+            }
+        }
+
+        // 보유스킬 3 페이지
+        &.bnr02{
+            @include grid('pc');
+            padding: #{'min(2.5rem,100px)'} 0 $hi40;
+            @include tab{
+                @include grid('');
+                padding: $hi80 0 $hi60;
+            }
+            h2{
+                font-size: $fz20;
+                font-family: 'dut';
+                line-height: $hi80;
+                @include mob{
+                    font-size: #{'min(1.8em,18px)'};
+                    line-height: $hi40;
+                    margin-top: $hi40;
+                    text-align: center;
+                }
+            }
+            .bnrTop{
+                margin-top: $hi80;
+                display: flex;
+                justify-content: space-between;
+                width: calc(100% / 12 * 8);
+                margin: 0 auto;
+                @include tab{
+                    width: 100%;
+                }
+                @include mob{
+                    margin-top: $hi40;
+                    width: 100%;
+                    display: block;
+                }
+                .perRnd{
+                    width: calc(100% / 3);
+                    margin: 0 auto;
+                    text-align: center;
+                    @include mob{
+                        width: 100%;
+                        &:nth-child(1)~.perRnd{
+                            margin-top: $hi40;
+                        }
+                    }
+                    svg{
+                        width: 160px;
+                        height: 160px;
+                        @include mob{
+                            width: 100px;
+                            height: 100px;
+                        }
+                        circle{
+                            fill: transparent;
+                            stroke: $co;
+                            stroke-width: 14;
+                            stroke-dasharray: 439;
+                            stroke-dashoffset: 439;
+                            transform-origin: 50%;
+                            transform: rotate(-90deg);
+                            stroke-linecap: round;
+                            @include mob{
+                                stroke-width: 11;
+                                cx : 50;
+                                cy : 50;
+                                r : 40;
+                                stroke-dasharray: 245;
+                                stroke-dashoffset: 245;
+                            }
+                        }
+                    }
+                    h3{
+                        font-size: #{'min(1.5em,15px)'};
+                        line-height: $hi40;
+                        margin-top: $hi20;
+                        font-family: 'dut';
+                        text-align: center;
+                        @include mob{
+                            font-size: #{'min(1.4em,14px)'};
+                        }
+                    }
+                    p{
+                        width: 70%;
+                        margin: 0 auto;
+                        font-size: $fz13;
+                        line-height: $hi20;
+                        font-family: 'light';
+                        text-align: center;
+                        @include mob{
+                            font-size: #{'min(1.2em, 12px)'};
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .bnrBtm{
+                margin-top: $hi120;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                @include tab{
+                    margin-top: $hi80;
+                }
+                @include mob{
+                    display: block;
+                }
+                .perBar{
+                    width: calc(100% / 12 * 5.5);
+                    margin-top: $hi20;
+                    @include mob{
+                        width: 100%;
+                    }
+                    h3{
+                        font-size: #{'min(1.5em,15px)'};
+                        line-height: $hi40;
+                        font-family: 'dut';
+                        @include mob{
+                            font-size: #{'min(1.6em,16px)'};
+                        }
+                    }
+                    .bar{
+                        width: 100%;
+                        height: #{'min(2.5em,25px)'};
+                        border-radius: 10px;
+                        background-color: #eee;
+                        .per{
+                            width: 0%;
+                            height: #{'min(2.5em,25px)'};
+                            border-radius: 10px;
+                            background-color: #999;
+                            transition: background-color 0.3s;
+                            &.color{
+                                background-color: $co;
+                            }
+                            @include mob{
+                                height: #{'min(1.5em,15px)'};
+                            }
+                        }
+                    }
+                }
+            }
+            .downBtn{
+                margin-top: $hi60;
+                @include img();
+                background-size: contain;
+                height: $hi20;
+                background-image: url('../images/arrow.png');
+                @include mob{
+                    display: none
+                }
+            }
+        }
+    }
+}
+
+// 프로젝트 4 페이지
+.cntWrap{
+    background-color: rgb(247, 247, 247);
+    .content.cnt01{
+        @include grid('pc');
+        padding: $hi120 0;
+        @include tab{
+            @include grid('');
+            padding: $hi60 0 $hi40;
+        }
+        header{
+            h2{
+                font-size: $fz20;
+                font-family: 'dut';
+                line-height: $hi80;
+                @include mob{
+                    font-size: #{'min(1.8em,18px)'};
+                    line-height: $hi40;
+                    margin-top: $hi40;
+                    text-align: center;
+                }
+            }
+        }
+        section{
+            margin-top: $hi80;
+            display: flex;
+            justify-content: space-between;
+            @include tab{
+                margin-top: $hi20;
+            }
+            @include mob{
+                display: block;
+            }
+            article{
+                width: 50%;
+                @include mob{
+                    width: 100%;
+                    &:nth-child(2){
+                        margin-top: $hi40;
+                    }
+                }
+                .image{
+                    @include img();
+                    background-size: contain;
+                    height: #{'min(4rem,160px)'};
+                    @for $i from 1 through 2{
+                        &.i#{$i}{
+                            background-image: url('../images/port0#{$i}.png');
+                        }
+                    }
+                }
+                .texts{
+                    text-align: center;
+                    margin-top: $hi40;
+                    h2{
+                        font-size: #{'min(4em,40px)'};
+                        line-height: $hi40;
+                        color: #ccc;
+                        font-family: 'dut';
+                        @include mob{
+                            font-size: #{'min(3.5em,35px)'};
+                        }
+                    }
+                    h3{
+                        font-size: $fz20;
+                        line-height: $hi40;
+                        font-family: 'bold';
+                        @include mob{
+                            font-size: #{'min(1.6em, 16px)'};
+                        }
+                    }
+                    h4{
+                        font-size: #{'min(1.6em,16px)'};
+                        line-height: $hi20;
+                        font-family: 'dutl';
+                        @include mob{
+                            font-size: #{'min(1.4em,14px)'};
+                        }
+                    }
+                    h5{
+                        font-size: #{'min(1.4em,14px)'};
+                        line-height: $hi40;
+                        margin-top: $fz20;
+                        font-family: 'dutl';
+                        @include mob{
+                            font-size: #{'min(1.4em,14px)'};
+                            margin-top: 0px;
+                        }
+                    }
+                    .btns{
+                        width: 80%;
+                        margin: 0 auto;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: $hi20;
+                        @include tab{
+                            width: 100%;
+                        }
+                        *{
+                            cursor: pointer;
+                            font-size: #{'min(1.3em,13px)'};
+                            margin: 0 auto;
+                            border: 1px solid lightgray;
+                            line-height: $hi40;
+                            height: $hi40;
+                            text-align: center;
+                            font-family: 'regular';
+                            transition: all 0.3s;
+                            &:hover{
+                                background-color: $co;
+                                border: 1px solid $co;
+                            }
+                            // @include mob{
+                            //    font-size: #{'min(1.1em,11px)'};
+                            //    line-height: #{'min(0.75rem,30px)'};
+                            //    height: #{'min(0.75rem,30px)'};
+                            // }
+                        }
+                        .link{
+                            width: calc(50% - 10px);
+                            @include tab{
+                                width: calc(50% - 5px);
+                            }
+                            a{
+                                border: none;
+                            }
+
+                        }
+                        .pdf{
+                            width: calc(50% - 10px);
+                            @include tab{
+                                width: calc(50% - 5px);
+                            }
+                            a{
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 푸터
+.ftrWrap{
+    footer{
+        text-align: center;
+        padding: $hi20 0;
+        h1{
+            font-size: $fz13;
+            font-family: 'bau';
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        h2{
+            font-size: #{'min(0.9em,9px)'};
+            color: #666;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+// 탑버튼
+.scrBtn{
+    cursor: pointer;
+    position: fixed;
+    right: 2%;
+    bottom: 3%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    line-height: 45px;
+    text-align: center;
+    font-family: 'dut';
+    color: #666;
+    @include mob{
+        width: 30px;
+        height: 30px;
+        right: 1%;
+        bottom: 1%;
+        font-size: #{'min(1.2em,12px)'};
+        line-height: 25px;
+    }
+}
