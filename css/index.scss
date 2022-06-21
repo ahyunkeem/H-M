@@ -110,7 +110,7 @@ html{
             left: 500px;
             mix-blend-mode: exclusion;
             transform: translate(-50%,-50%);
-            position: fixed;
+            position: absolute;
             cursor: none;
             @include tab{
                 display: none;
@@ -377,6 +377,7 @@ html{
                 background-size: contain;
                 height: $hi20;
                 background-image: url('../images/arrow.png');
+                cursor: pointer;
                 @include mob{
                     display: none
                 }
@@ -538,6 +539,9 @@ html{
                             border-radius: 10px;
                             background-color: #999;
                             transition: background-color 0.3s;
+                            &:hover{
+                                background-color: $co;
+                            }
                             @include mob{
                                 height: #{'min(1.5em,15px)'};
                             }
@@ -551,6 +555,7 @@ html{
                 background-size: contain;
                 height: $hi20;
                 background-image: url('../images/arrow.png');
+                cursor: pointer;
                 @include mob{
                     display: none
                 }
@@ -671,11 +676,6 @@ html{
                                 background-color: $co;
                                 border: 1px solid $co;
                             }
-                            // @include mob{
-                            //    font-size: #{'min(1.1em,11px)'};
-                            //    line-height: #{'min(0.75rem,30px)'};
-                            //    height: #{'min(0.75rem,30px)'};
-                            // }
                         }
                         .link{
                             width: calc(50% - 10px);
