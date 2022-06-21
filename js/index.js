@@ -78,6 +78,44 @@ $(function(){
     // 풀페이지 스크롤
     function scrbnr01(){
         $('html,body').stop().animate({scrollTop : loc2},500);
+        if(flag == true){
+            // 원형그래프
+            var percent = 0;
+            $({per:0}).animate({per:95},{
+                duration : 1500,
+                progress : function(){
+                    percent = 439 - ((439 * this.per) / 100);
+                    svg.eq(0).find('circle').css('stroke-dashoffset', percent);
+                }
+            })
+            $({per:0}).animate({per:90},{
+                duration : 1500,
+                progress : function(){
+                    percent = 439 - ((439 * this.per) / 100);
+                    svg.eq(1).find('circle').css('stroke-dashoffset', percent);
+                }
+            })
+            $({per:0}).animate({per:82},{
+                duration : 1500,
+                progress : function(){
+                    percent = 439 - ((439 * this.per) / 100);
+                    svg.eq(2).find('circle').css('stroke-dashoffset', percent);
+                }
+            })
+            // 가로그래프
+            perbar.each(function(a){
+                var num = $(this).attr('data-num');
+                $({percent:0}).animate({percent : num},{
+                    duration : 2000,
+                    progress : function(){
+                        perbar.eq(a).css({
+                            width : parseInt(this.percent)+'%'
+                        });
+                    }
+                });
+            });
+            flag = false;
+        }
     }
     function scrbnr02(){
         $('html,body').stop().animate({scrollTop : loc3},500);
